@@ -20,3 +20,15 @@ after_success:
     - docker push rfiguerasdegea/multi-nginx
     - docker push rfiguerasdegea/multi-server
     - docker push rfiguerasdegea/multi-worker
+
+deploy:
+    provider: elasticbeanstalk
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    region: eu-central-1
+    app: multi-docker
+    env: MultiDocker-env
+    bucket_name: elasticbeanstalk-eu-central-1-513588186347
+    bucket_path: docker-multi
+on:
+    branch: master
