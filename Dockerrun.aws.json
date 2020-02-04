@@ -12,7 +12,7 @@
             "name": "server",
             "image": "rfiguerasdegea/multi-server",
             "hostname": "api",
-            "essential": true,
+            "essential": false,
             "memory": 128
         },
         {
@@ -20,6 +20,20 @@
             "image": "rfiguerasdegea/multi-worker",
             "hostname": "worker",
             "essential": false,
+            "memory": 128
+        },
+        {
+            "name": "nginx",
+            "image": "rfiguerasdegea/multi-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server"],
             "memory": 128
         }
     ]
