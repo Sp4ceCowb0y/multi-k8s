@@ -5,12 +5,10 @@ metadata:
 spec:
     acme:
         server: https://acme-v02.api.letsencrypt.org/directory
-#        server: https://acme-staging-v02.api.letsencrypt.org/directory
         email: rfiguerasdegea@outlook.com
         privateKeySecretRef:
             name: letsencrypt-prod
         solvers:
-        - selector: {}
-            http01:
+            - http01:
                 ingress:
                     class: nginx
